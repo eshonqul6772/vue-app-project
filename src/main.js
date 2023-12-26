@@ -8,6 +8,7 @@ import {router} from '@/router';
 import uiComponents from  '@/components';
 
 import './assets/normalize.css';
+import 'ant-design-vue/dist/reset.css';
 
 const app = createApp(App);
 
@@ -15,4 +16,5 @@ uiComponents.map(component => app.component(component.name, component));
 
 app.use(store);
 app.use(router);
+
 app.mount('#app');

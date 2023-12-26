@@ -8,7 +8,7 @@
       </div>
       <div class="input-box">
         <label htmlFor="password">field_password</label>
-        <input type="password" v-model="password" name="password" class="form__input" :class="{ 'is-invalid': submitted && !password }" />
+        <input  type="password" v-model="password" name="password" class="form__input" :class="{ 'is-invalid': submitted && !password }" />
         <div v-show="submitted && !password" class="valid-masses">validation_required</div>
       </div>
       <div class="form-group">
@@ -34,6 +34,8 @@ export default {
   computed: {
     ...mapState('account', ['status'])
   },
+
+
   created () {
     this.logout();
   },
@@ -58,13 +60,13 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  width:100vw;
-  height:100vh;
+  inline-size:100vw;
+  block-size:100vh;
   background-color: #0a2d56;
 }
 
 .form{
-  width: 500px;
+  inline-size: 500px;
   padding: 20px;
   background-color: #9baab8;
 }
@@ -72,12 +74,12 @@ export default {
 .input-box{
   display: flex;
   flex-direction: column;
-  margin-bottom: 10px;
+  margin-block-end: 10px;
 }
 
 .input-box input {
   padding: 8px 15px;
-  margin-bottom: 5px;
+  margin-block-end: 5px;
   border-radius: 6px;
   outline: none;
   border: 1px solid transparent;
@@ -90,7 +92,7 @@ export default {
 }
 
 .input-box label{
-  margin-bottom: 5px;
+  margin-block-end: 5px;
   color: #0a2d56;
   font-weight: 600;
   font-size: 13px;
@@ -98,8 +100,15 @@ export default {
   word-break: break-all;
 }
 
+.input-box label::before{
+  content: '*';
+  font-size: 15px;
+  padding-inline-end: 3px;
+  color: red;
+}
+
 .valid-masses{
-  margin-bottom: 10px;
+  margin-block-end: 10px;
   color: #f03a45;
   font-weight: 500;
   font-size: 13px;
@@ -107,8 +116,8 @@ export default {
 }
 
 button{
-  width:100%;
-  margin-bottom: 10px;
+  inline-size:100%;
+  margin-block-end: 10px;
   padding:8px;
   color: white;
   background-color: #0a2d56;

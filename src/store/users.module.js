@@ -1,26 +1,25 @@
-import { userService } from '../services';
+import { userService } from '../service';
 
 const state = {
     all: {}
 };
 
 const actions = {
-    getAll({ commit }) {
+    getList({ commit }) {
         commit('getAllRequest');
-        
-        userService.getAll()
+
+        userService.getList()
             .then(
                 users => commit('getAllSuccess', users),
                 error => commit('getAllFailure', error)
             );
     },
-
     delete({ commit }, id) {
         commit('deleteRequest', id);
 
         userService.delete(id)
             .then(
-                user => commit('deleteSuccess', id),
+                () => commit('deleteSuccess', id),
                 error => commit('deleteFailure', { id, error: error.toString() })
             );
     }
@@ -43,9 +42,11 @@ const mutations = {
                 : user
         )
     },
+
     deleteSuccess(state, id) {
         state.all.items = state.all.items.filter(user => user.id !== id)
     },
+
     deleteFailure(state, { id, error }) {
         state.all.items = state.items.map(user => {
             if (user.id === id) {

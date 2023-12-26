@@ -1,6 +1,6 @@
 const routes = [
-  {path: '/', title: 'Dashboard'},
-  {path: '/user', title: 'User'}
+  {path: '/', title: 'dashboard'},
+  {path: '/users', title: 'users'},
 ]
 
 export default routes

@@ -1,5 +1,5 @@
 <template>
-	<button class="w-100 btn btn-lg btn-primary mt-3">
+	<button class="btn">
 		<slot></slot>
 	</button>
 </template>
@@ -10,4 +10,17 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.btn{
+  padding:7px 10px;
+  border-radius:5px;
+  outline:0;
+  border: 0;
+  cursor:pointer;
+  transition: all 0.3s ease-out;
+}
+
+.btn:hover{
+  transform: scale(1.06);
+}
+</style>

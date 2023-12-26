@@ -1,7 +1,7 @@
 import {createStore} from 'vuex';
 
 import { alert } from './alert.module';
-import { account } from './account.module';
+import { account } from './auth.module.js';
 import { users } from './users.module';
 
 const store = createStore({

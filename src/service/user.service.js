@@ -1,15 +1,6 @@
 import {authHeader} from '@/helpers/auth-header.js';
 
-const APU_URL = 'http://localhost:9090/v1/e-ngo'
-
-export const userService = {
-  login,
-  logout,
-  getAll,
-  getById,
-  update,
-  delete: _delete
-};
+const APU_URL = 'http://localhost:9090/v1/e-ngo';
 
 function login (username, password, remember_me) {
   const requestOptions = {
@@ -21,26 +12,29 @@ function login (username, password, remember_me) {
   return fetch (`${APU_URL}/oauth/login`, requestOptions)
     .then ((response) => response.json ())
     .then (user => {
-      console.log (user);
       if (user.data.access_token) {
-        localStorage.setItem ('user', JSON.stringify (user));
+        localStorage.setItem ('user', JSON.stringify (user.data));
       }
 
       return user;
     });
 }
 
-function logout () {
-  localStorage.removeItem ('user');
-}
-
-function getAll () {
+function getList () {
   const requestOptions = {
-    method: 'GET',
-    headers: authHeader ()
+    method: 'POST',
+    headers: authHeader (),
+    body: JSON.stringify ({
+      per_page: 10,
+      page: 0,
+      sort: {
+        name: "id",
+        direction: "desc"
+      }
+    })
   };
 
-  return fetch (`${APU_URL}/user/pageable`, requestOptions).then (handleResponse);
+  return fetch (`${APU_URL}/users/pageable`, requestOptions).then (handleResponse)
 }
 
 
@@ -74,7 +68,7 @@ function _delete (id) {
 
 function handleResponse (response) {
   return response.text ().then (text => {
-    const data = text && JSON.parse (text);
+    const {data} = text && JSON.parse (text);
     if (!response.ok) {
       if (response.status === 401) {
         logout ();
@@ -88,3 +82,16 @@ function handleResponse (response) {
     return data;
   });
 }
+
+function logout () {
+  localStorage.removeItem ('user');
+}
+
+export const userService = {
+  login,
+  logout,
+  getList,
+  update,
+  getById,
+  delete: _delete
+};
