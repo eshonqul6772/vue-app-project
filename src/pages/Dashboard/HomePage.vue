@@ -17,7 +17,7 @@
 <script>
 import {mapState, mapActions} from 'vuex';
 import Sidebar from '@/layouts/Sidebar/Sidebar.vue';
-import Navbar from "@/layouts/Navbar/Navbar.vue";
+import Navbar from "@/layouts/Header/Header.vue";
 import UserView from '@/views/UserView.vue';
 
 export default {

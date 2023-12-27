@@ -3,7 +3,7 @@
 </template>
 
 <script setup>
-import HomePage from "@/pages/Dashboard/HomePage.vue";
+ import HomePage from "@/pages/Dashboard/HomePage.vue";
 </script>
 
 

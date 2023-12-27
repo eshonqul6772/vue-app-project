@@ -1,7 +1,7 @@
 <template>
   <div>
     <PageHeader/>
-    <a-table style="font-weight: bold" :dataSource="users.items" :columns="columns" size="small"/>
+    <a-table pagination=false}} style="font-weight: 600" :dataSource="users.items" :columns="columns" size="small"/>
     <p>
       <router-link to="/login">Logout</router-link>
     </p>
@@ -41,23 +41,27 @@ export default {
     return {
       columns: [
         {
-          title: 'first_name',
+          title: 'column_first_name',
           dataIndex: 'first_name',
           key: 'first_name',
         },
         {
-          title: 'last_name',
+          title: 'column_last_name',
           dataIndex: 'last_name',
           key: 'last_name',
         },
-
         {
-          title: 'status',
+          title: 'column_login',
+          dataIndex: 'login',
+          key: 'login',
+        },
+        {
+          title: 'column_status',
           dataIndex: 'status',
           key: 'status',
         },
         {
-          title: 'type',
+          title: 'column_type',
           dataIndex: 'type',
           key: 'type',
         },

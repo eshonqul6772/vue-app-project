@@ -42,6 +42,14 @@ h1 {
   font-size: 2em;
 }
 
+th{
+  font-weight: bold !important;
+  font-size: 13px;
+  background-color: transparent !important;
+  color: #0a2d56 !important;
+  transition: none !important;
+}
+
 /* Grouping Content
    ========================================================================== */
 
@@ -92,7 +100,6 @@ abbr[title] {
   text-decoration: underline;
 
   /* 2 */
-  text-decoration: underline dotted;
   border-bottom: none;
 
   /* 2 */

@@ -13,13 +13,13 @@
         <template #overlay>
           <a-menu>
             <a-menu-item>
-              <a>EN</a>
+              <a>english</a>
             </a-menu-item>
             <a-menu-item>
-              <a>RU</a>
+              <a>russian</a>
             </a-menu-item>
             <a-menu-item>
-              <a>UZ</a>
+              <a>o'zbek</a>
             </a-menu-item>
           </a-menu>
         </template>
@@ -32,7 +32,7 @@
         <template #overlay>
           <a-menu>
             <a-menu-item>
-              <a @click='logout'>logout</a>
+              <a @click='logout'>logout-></a>
             </a-menu-item>
           </a-menu>
         </template>
@@ -43,7 +43,7 @@
 
 <script>
 
-import {MenuOutlined} from '@ant-design/icons-vue';
+import { MenuOutlined } from '@ant-design/icons-vue';
 
 export default {
   components: {
@@ -88,15 +88,13 @@ button {
   border-radius: 50%;
   font-size: 20px;
   font-weight: bold;
-}
-
-.profile select option {
-  color: black;
+  border: 1px solid black;  
 }
 
 .lang {
   background-color: white;
   color: black;
+  font-size: 20px;
 }
 
 </style>
