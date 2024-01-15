@@ -1,6 +1,8 @@
 import {authHeader} from '@/helpers/auth-header.js';
 
-const APU_URL = 'http://localhost:9090/v1/e-ngo';
+const ENV = import.meta.env;
+
+const baseUrl = ENV.VITE_APP_API_BASE_URL
 
 function login (username, password, remember_me) {
   const requestOptions = {
@@ -9,10 +11,10 @@ function login (username, password, remember_me) {
     body: JSON.stringify ({username, password, remember_me})
   };
 
-  return fetch (`${APU_URL}/oauth/login`, requestOptions)
+  return fetch (`${baseUrl}/auth/login`, requestOptions)
     .then ((response) => response.json ())
     .then (user => {
-      if (user.data.access_token) {
+      if (user.data.accessToken) {
         localStorage.setItem ('user', JSON.stringify (user.data));
       }
 
@@ -34,7 +36,7 @@ function getList () {
     })
   };
 
-  return fetch (`${APU_URL}/users/pageable`, requestOptions).then (handleResponse)
+  return fetch (`${baseUrl}/admin/users/pageable`, requestOptions).then (handleResponse)
 }
 
 
@@ -44,7 +46,7 @@ function getById (id) {
     headers: authHeader ()
   };
 
-  return fetch (`${APU_URL}/users/${id}`, requestOptions).then (handleResponse);
+  return fetch (`${baseUrl}/users/${id}`, requestOptions).then (handleResponse);
 }
 
 function update (user) {
@@ -54,7 +56,7 @@ function update (user) {
     body: JSON.stringify (user)
   };
 
-  return fetch (`${APU_URL}/users/${user.id}`, requestOptions).then (handleResponse);
+  return fetch (`${baseUrl}/users/${user.id}`, requestOptions).then (handleResponse);
 }
 
 function _delete (id) {
@@ -63,7 +65,7 @@ function _delete (id) {
     headers: authHeader ()
   };
 
-  return fetch (`${APU_URL}/users/${id}`, requestOptions).then (handleResponse);
+  return fetch (`${baseUrl}/users/${id}`, requestOptions).then (handleResponse);
 }
 
 function handleResponse (response) {

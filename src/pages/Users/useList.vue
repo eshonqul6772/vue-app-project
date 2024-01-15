@@ -51,9 +51,9 @@ export default {
           key: 'last_name',
         },
         {
-          title: 'column_login',
-          dataIndex: 'login',
-          key: 'login',
+          title: 'column_username',
+          dataIndex: 'username',
+          key: 'username',
         },
         {
           title: 'column_status',
